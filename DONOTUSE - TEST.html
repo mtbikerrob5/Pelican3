@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pelican3 Blog Embed Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #pelican3Iframe {
+      width: 100%;
+      border: none;
+      transition: height 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="padding: 1rem;">Embedded Pelican3 Blog</h2>
+
+  <iframe
+    id="pelican3Iframe"
+    src="https://pelican3-50220956.hs-sites.com/pelican3-perspectives"
+    height="100"
+    scrolling="no"
+  ></iframe>
+
+  <script>
+    window.addEventListener("message", function(event) {
+      const trustedOrigin = "https://pelican3-50220956.hs-sites.com";
+
+      if (
+        event.origin === trustedOrigin &&
+        event.data &&
+        typeof event.data.height === "number"
+      ) {
+        const iframe = document.getElementById("pelican3Iframe");
+        iframe.style.height = event.data.height + "px";
+      }
+    });
+  </script>
+</body>
+</html>
